@@ -10,28 +10,28 @@ DEB_HOST_ARCH_OS  ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 DEB_HOST_ARCH_CPU ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
 
 confflags = \
-	-Dlibkms=true \
+	--enable-libkms \
 	$()
 
 # Linux vs. the rest:
 ifeq (linux, $(DEB_HOST_ARCH_OS))
-	confflags += -Dudev=true
+	confflags += --enable-udev
 else
-	confflags += -Dudev=false
+	confflags += --disable-udev
 endif
 
 # Disable platform drivers
 confflags += \
-	-Dradeon=false \
-	-Damdgpu=false \
-	-Dvmwgfx=false \
-	-Dnouveau=false \
-	-Dintel=false \
-	-Dexynos=false \
-	-Domap=false \
-	-Detnaviv=false \
-	-Dtegra=false \
-	-Dfreedreno=false
+	--disable-radeon \
+	--disable-amdgpu \
+	--disable-vmwgfx \
+	--disable-nouveau \
+	--disable-intel \
+	--disable-exynos \
+	--disable-omap \
+	--disable-etnaviv \
+	--disable-tegra \
+	--disable-freedreno
 
 ###
 ### Actual build
@@ -51,6 +51,4 @@ override_dh_makeshlibs:
 	dh_makeshlibs -plibkms1 -V'libkms1 (>= 2.4.89)' -- -c4
 
 %:
-	dh $@ --with quilt \
-		--builddirectory=build/ \
-		--buildsystem=meson
+	dh $@ --with quilt --builddirectory=build/

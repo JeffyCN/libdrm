@@ -3,8 +3,6 @@ Priority: optional
 Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
 Uploaders: Andreas Boll <aboll@debian.org>
 Build-Depends:
- debhelper (>= 11),
- meson,
  quilt,
  xsltproc,
  docbook-xsl,
