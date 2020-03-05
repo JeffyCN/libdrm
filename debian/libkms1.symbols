@@ -1,0 +1,9 @@
+libkms.so.1 libdrm2 #MINVER#
+ kms_bo_create@Base 2.4.97-1
+ kms_bo_destroy@Base 2.4.97-1
+ kms_bo_get_prop@Base 2.4.97-1
+ kms_bo_map@Base 2.4.97-1
+ kms_bo_unmap@Base 2.4.97-1
+ kms_create@Base 2.4.97-1
+ kms_destroy@Base 2.4.97-1
+ kms_get_prop@Base 2.4.97-1

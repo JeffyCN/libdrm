@@ -25,6 +25,7 @@ Section: libdevel
 Architecture: linux-any kfreebsd-any
 Depends:
  libdrm2 (= ${binary:Version}),
+ libkms1 (= ${binary:Version}),
  libdrm-intel1 (= ${binary:Version}) [amd64 i386 kfreebsd-amd64 kfreebsd-i386 x32],
  libdrm-radeon1 (= ${binary:Version}),
  libdrm-nouveau2 (= ${binary:Version}) [linux-any],
@@ -44,6 +45,16 @@ Description: Userspace interface to kernel DRM services -- development files
  OpenGL drivers.
  .
  This package provides the development environment for libdrm.
+
+Package: libkms1
+Architecture: linux-any kfreebsd-any
+Depends:
+ libdrm2 (>= ${source:Version}),
+ ${shlibs:Depends},
+ ${misc:Depends},
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Description: Userspace interface to kernel DRM KMS services
 
 Package: libdrm2
 Architecture: linux-any kfreebsd-any
